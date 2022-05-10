@@ -1,0 +1,23 @@
+﻿@using Foundation.Dictionary.Extensions
+@using Foundation.SitecoreExtensions.Extensions
+@using Learn.Feature.Promotions
+@model RenderingModel
+@{
+    if (!Model.Item.IsDerived(Templates.Carousel.ID))
+    {
+        return;
+    }
+}
+
+<div>
+    @Html.Sitecore().Dictionary("Carousel", "Carousel")
+</div>
+<div>
+    @Html.Sitecore().ImageField(Templates.Carousel.Fields.Image, Model.Item)
+    @Html.Sitecore().Field(Templates.Carousel.Fields.Title, Model.Item)
+    @Html.Sitecore().Field(Templates.Carousel.Fields.Description, Model.Item)
+    @Html.Sitecore().Field(Templates.Carousel.Fields.Link, Model.Item)
+
+
+    <div>@Model.Item.LinkFieldUrl(Templates.Carousel.Fields.Link)</div>
+</div>
